@@ -61,9 +61,9 @@ https://colab.research.google.com/github/masolele/Pantropical_landuse/blob/main/
 
 🛰️ Downloads and preprocesses Sentinel-2 + indices + Sentinel-1 + loacation information (Latitude + Longitudes + elevation)
 
-🌾 Predicts land use categories over deforested areas only using ONNX models
+🌾 Predicts cocoa probability only using ONNX models
 
-🗺️ Side-by-side map of RGB imagery + follow-up land use prediction
+🗺️ Side-by-side map of RGB imagery + cocoa probability
 
 📤 Export predictions as GeoTIFF for GIS analysis
 ```
@@ -113,32 +113,11 @@ The 17 input channels are organized as follows:
 - **Data Type**: float32 (elem_type: 1)
 
 ### Land use following deforestation classes
-The model output is variable depending on the region. The model predicts 25, 22, and 24 land use types for Africa, Latin America, and Southeast Asia, respectively. Each pixel in the output contains a probability distribution over this class.
+The model output is variable depending on the region. The model predicts 25, 22, and 24 land use types for Africa, Latin America, and Southeast Asia, respectively. Each pixel in the output contains a probability distribution over this class. For .
 
 Example format for each pixel:
 ```python
-Africa
-classes = [
-    # Land use classes
-    0: "Background", 1: "Other large-scale cropland", 2: "Pasture", 3:'Mining', 4:'Other small-scale cropland', 5:'Roads', 6:'Other land with tree cover/Regrowth', 7:'Plantation forest',
-    8:'Coffee', 9:'Build_up', 10:'Water', 11:'Oil_palm', 12:'Rubber', 13:'Cocoa', 14:'Avocado', 15:'Soy', 16:'Sugar', 17:'Maize', 18:'Banana', 19:'Pineapple',
-    20:'Rice', 21:'Wood_logging', 22:'Cashew', 23:'Tea', 24:'Others'
-
-Latin America
-classes = [
-    # Land use classes
-    0: "Background", 1: "Other large-scale cropland", 2: "Pasture", 3:'Mining', 4:'Other small-scale cropland', 5:'Roads', 6:'Other land with tree cover/Regrowth', 7:'Plantation forest',
-    8:'Coffee', 9:'Build_up', 10:'Water', 11:'Oil_palm', 12:'Rubber', 13:'Cocoa', 14:'Avocado', 15:'Soy', 16:'Sugar', 17:'Maize', 18:'Banana', 19:'Pineapple',
-    20:'Rice', 21:'Wood_logging'
-
-Southeast Asia
-classes = [
-    # Land use classes
-    0: "Background", 1: "Other large-scale cropland", 2: "Pasture", 3:'Mining', 4:'Other small-scale cropland', 5:'Roads', 6:'Other land with tree cover/Regrowth', 7:'Plantation forest',
-    8:'Coffee', 9:'Build_up', 10:'Water', 11:'Oil_palm', 12:'Rubber', 13:'Cocoa', 14:'Clove', 15:'Soy', 16:'Sugar', 17:'Maize', 18:'Banana', 19:'Pineapple',
-    20:'Rice', 21:'Wood_logging', 22:'Cashew', 23:'Tea'
-
-]
+Output values 0 -- 100, with  zero being lower probability and 100 higher cocoa probability
 ```
 
 ## Usage Example (Actual usage refers to the  interactive notebook)
@@ -159,7 +138,7 @@ output_name = session.get_outputs()[0].name
 predictions = session.run([output_name], {input_name: input_data})[0]
 
 # Get predicted class
-predicted_classes = np.argmax(predictions, axis=-1)
+predicted_classes = predictions[13]
 ```
 ## Models
 
@@ -250,7 +229,7 @@ Each group follows a unique processing path.
 - **Concatenation:** Outputs from both U-Nets and the dense network (resized to `[1, 256, 64, 64]`) are combined into `[1, 384, 64, 64]` (64 + 64 + 256 = 384, though channel counts may vary).
 - **Final Convolution:** A 1x1 conv layer with 22 filters produces `[1, 22, 64, 64]`.
 - **Softmax:** Generates class probabilities.
-- **Output:** Transposed to `[1, 64, 64, 1]`, a segmentation map with 1 class per pixel.
+- **Output:** Transposed to `[1, 64, 64, 1]`, a segmentation map with cocoa probability.
 
 ---
 
@@ -262,7 +241,7 @@ Each group follows a unique processing path.
    - The dense network processes channels 12–14 into a guiding feature map.
 3. **Attention:** The dense network’s output weights U-Net features during upsampling, highlighting key areas.
 4. **Fusion:** All features are combined to integrate multi-channel information.
-5. **Segmentation:** A final layer classifies each pixel into one 1 class.
+5. **Segmentation:** A final layer predicts the probability of each pixel being cocoa.
 
 ---
 
@@ -277,10 +256,10 @@ This architecture is tailored for:
 
 ## Summary
 
-The `Land use following deforestation model` combines three U-Nets
+The `Global cocoa model` combines three U-Nets
 network to process a 17-channel, 64x64 input. Channels 0–11, 12–13 and 14 - 16
 re handled by U-Nets for feature extraction, while channels 12–14 guide 
-attention via a dense network. The fused output becomes a 64x64 segmentation map with 1 class for each pixel.
+attention via a dense network. The fused output becomes a 64x64 segmentation map with a cocoa class for each pixel.
 
 ## License
 This work is licensed under the Apache License 2.0 - please see the [LICENSE](LICENSE) file for details.
