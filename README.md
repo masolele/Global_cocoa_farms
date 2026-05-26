@@ -1,10 +1,10 @@
-# Pantropical landuse Model Documentation
+# Global Cocoa Model Documentation
 
-This document describes the pantropical land-use model for monitoring land use after deforestation using remote sensing.
+This document describes the Global Cocoa Model for monitoring cocoa farms using remote sensing.
 
 ## Model Overview
 
-The model is an Attention U-Net with fusion mechanisms, specifically designed for land-use monitoring using multi-source satellite data (Sentinel-1 and Sentinel-2) and geographic information (latitude, longitude, and elevation).
+The model is a Tri-Attention U-Net with late fusion mechanisms, specifically designed for global cocoa monitoring using multi-source satellite data (Sentinel-1 and Sentinel-2) and geographic information (latitude, longitude, and elevation).
 
 ### Model Architecture
 
