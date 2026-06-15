@@ -30,7 +30,7 @@ A standard computer with a minimum of 16GB RAM to support the in-memory operatio
 - **Geemap**: Data download
 - **Matplotlib**: For plotting
 
-### You can run the model either locally or via Colab. Below I provide both options. With the Colab option, you can run the model prediction interactively, and step-by-step code is provided. Of course, you can adapt it to your own environment.
+### You can run the model either locally or via Colab. Below I provide both options. With the Colab option, you can run the model prediction interactively. A step-by-step code is provided. Of course, you can adapt it to your own environment.
 ## Installation on local machine
 
 Create and activate the virtual environment and install the package as follows:
