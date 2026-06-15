@@ -114,7 +114,8 @@ The 17 input channels are organized as follows:
 
 ### Example format for each pixel:
 ```python
-Output probability values 0 -- 100, with  zero being a lower probability and 100 being a higher cocoa probability
+Output probability values 0 -- 100, with  zero being a lower probability and
+ 100 being a higher cocoa probability
 ```
 
 ## Usage Example (Actual usage refers to the  interactive notebook)
