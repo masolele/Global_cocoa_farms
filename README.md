@@ -139,11 +139,11 @@ predictions = session.run([output_name], {input_name: input_data})[0]
 predicted_classes = predictions[13]
 ```
 ## Models
-
+https://huggingface.co/Masolele/Cocoa/blob/main/CocoaAfrica6.onnx
 Due to storage limitation on github, the models are found at:
-- **Africa**: {[Africa Model](https://huggingface.co/datasets/Masolele/deforestwatch-models/blob/main/best_weights_att_unet_lagtime_5_Fused3_2023_totalLoss6V1_without_loss_sentAfrica6.onnx)}
-- **Southeast Asia**: {[SEA Model](https://huggingface.co/datasets/Masolele/deforestwatch-models/blob/main/best_weights_att_unet_lagtime_5_Fused3_2023_totalLoss6V1_without_loss_sent_Southeast_Asia23.onnx)}
-- **Latin America**: {[LA Model](https://huggingface.co/datasets/Masolele/deforestwatch-models/blob/main/best_weights_att_unet_lagtime_5_Fused3_2023_totalLoss6V1_without_loss_sent_Latin_America56.onnx)}
+- **Africa**: {[Africa Model](https://huggingface.co/Masolele/Cocoa/blob/main/CocoaAfrica6.onnx)}
+- **Southeast Asia**: {[SEA Model](https://huggingface.co/Masolele/Cocoa/blob/main/CocoaSoutheastAsia23.onnx)}
+- **Latin America**: {[LA Model](https://huggingface.co/Masolele/Cocoa/blob/main/CocoaLatinAmerica56.onnx)}
 
 
 ## Deployment Considerations
