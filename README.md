@@ -139,7 +139,7 @@ predictions = session.run([output_name], {input_name: input_data})[0]
 predicted_classes = predictions[13]
 ```
 ## Models
-https://huggingface.co/Masolele/Cocoa/blob/main/CocoaAfrica6.onnx
+
 Due to storage limitation on github, the models are found at:
 - **Africa**: {[Africa Model](https://huggingface.co/Masolele/Cocoa/blob/main/CocoaAfrica6.onnx)}
 - **Southeast Asia**: {[SEA Model](https://huggingface.co/Masolele/Cocoa/blob/main/CocoaSoutheastAsia23.onnx)}
