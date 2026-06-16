@@ -1,0 +1,16 @@
+This validation data comprises of 2,270 points distributed across Africa (760), Latin America (860), and Southeast Asia (650).
+
+DESCRIPTION OF FIELD IDs IN THE VALIDATION SHAPEFILE:
+Pred_Class: Predicted cocoa
+Obs_Class: Observed cocoa
+Obs_Name: Name of observed cocoa class
+Conf_class: 1 stands for correct predictions, 2 for incorrect predictions
+
+BELOW IS THE LIST OF IDs OF COCOA FARMING SYSTEMS AND THE CORRESPONDING LABELS/NAMES : 
+
+[1: Fullsun cocoa,
+ 2: Forest shaded cocoa, 
+ 3: Tree-crop shaded cocoa, 
+ 4: Pasture cocoa, 
+ 5: Others
+] 
