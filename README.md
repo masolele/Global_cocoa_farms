@@ -135,8 +135,8 @@ input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
 predictions = session.run([output_name], {input_name: input_data})[0]
 
-# Get predicted class
-predicted_classes = predictions[13]
+# Get cocoa prediction
+predicted_cocoa = predictions[:, :, 13]
 ```
 ## Models
 
