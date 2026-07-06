@@ -1,0 +1,37 @@
+name: Track Repo Traffic
+
+on:
+  schedule:
+    # Runs every day at 03:00 UTC. Must run at least once every 14 days
+    # or you'll lose data in the gap.
+    - cron: '0 3 * * *'
+  workflow_dispatch:  # lets you trigger it manually from the Actions tab to test
+
+permissions:
+  contents: write  # needed so the workflow can commit the data back
+
+jobs:
+  fetch-traffic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Fetch and merge traffic data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: python .github/scripts/fetch_traffic.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add traffic-history/*.json traffic-history/*.csv
+          git diff --staged --quiet || git commit -m "Update traffic history [skip ci]"
+          git push
