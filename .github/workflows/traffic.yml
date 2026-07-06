@@ -24,7 +24,7 @@ jobs:
 
       - name: Fetch and merge traffic data
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
           REPO: ${{ github.repository }}
         run: python .github/scripts/fetch_traffic.py
 
