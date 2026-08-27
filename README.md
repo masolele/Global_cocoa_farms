@@ -4,7 +4,7 @@ This document describes the Global Cocoa Model for monitoring cocoa farms using 
 
 ## Model Overview
 
-The model is a Tri-Attention U-Net with late fusion mechanisms, specifically designed for global cocoa monitoring using multi-source satellite data: Sentinel-2 ( including NDVI, EVI, and NDRE indices), Sentinel-1, and geographic information (latitude, longitude, and elevation).
+The model is a Tri-Attention U-Net with late fusion mechanisms, specifically designed for global cocoa monitoring using multi-source satellite data: Sentinel-2 (including NDVI, EVI, and NDRE indices), Sentinel-1, and geographic information (latitude, longitude, and elevation).
 
 ### Model Architecture
 
