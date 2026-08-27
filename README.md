@@ -88,8 +88,8 @@ The 17 input channels are organized as follows:
    - Red Edge 1, 2, 3
    - NIR
    - SWIR 1, 2
-   -- *Note: These bands are normalized using log-transformation and percentile-based scaling*
    -  Derived indices (NDVI, EVI, NDRE)
+   - *Note: Bands (0-8) are normalized using log-transformation and percentile-based scaling*
 
 2. **Radar Data** (Channels 12-13):
    - VV polarization (normalized to [-25, 0] range)
