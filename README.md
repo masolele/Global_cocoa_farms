@@ -83,24 +83,22 @@ The model expects a single input tensor with the following specifications:
 ### Input Channel Organization
 The 17 input channels are organized as follows:
 
-1. **Sentinel-2 Bands** (Channels 0-8):
+1. **Sentinel-2 Bands** (Channels 0-11):
    - Blue, Green, Red
    - Red Edge 1, 2, 3
    - NIR
    - SWIR 1, 2
    - *Note: These bands are normalized using log-transformation and percentile-based scaling*
+   -  Derived indices (NDVI, EVI, NDRE)
 
-2. **Radar Data** (Channels 9-10):
+2. **Radar Data** (Channels 12-13):
    - VV polarization (normalized to [-25, 0] range)
    - VH polarization (normalized to [-30, -5] range)
 
-3. **Geographical Information** (Channels 11-13):
+3. **Geographical Information** (Channels 14-16):
    - Altitude (normalized to [-400, 8000] range)
    - Longitude (normalized to [-180, 180] range)
    - Latitude (normalized to [-60, 60] range)
-
-4. **Additional Features** (Channel 14):
-   - Derived indices (NDVI, EVI, NDRE)
 
 ## Output Specifications
 
